@@ -35,4 +35,4 @@ start:
         add al,30h
         mov inf+2,al
         cmp ah,10
-        ja  
+        ja  output1
