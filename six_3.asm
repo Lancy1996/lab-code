@@ -3,7 +3,7 @@ STACK   SEGMENT     USE16
         db  200 dup(0)
 STACK   ENDS
 DATA    SEGMENT     USE16
-inf     db 0,0,?,?,'0ah','0dh'
+inf     db 0,'x',0,0,?,?,'0ah','0dh'
 num     db 0
 DATA    ENDS
 CODE    SEGMENT     USE16
@@ -33,6 +33,21 @@ start:
         mov cl,16
         div cl
         add al,30h
-        mov inf+2,al
+        mov inf+4,al
         cmp ah,10
         ja  output1
+        add ah,30h
+        mov inf+5,ah
+        jmp output2
+output1: ;因数字9的ascii码和字母a的ascii码差7，此处应加37h
+        inf+5,ah
+        add ah,37h
+output2:;输出16进制信息
+        lea dx,inf
+        mov ah,9
+        int 21h
+
+        mov ah,4ch
+        int 21h
+CODE    ENDS
+        end     start
