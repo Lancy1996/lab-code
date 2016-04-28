@@ -46,7 +46,6 @@ output2:;输出16进制信息
         lea dx,inf
         mov ah,9
         int 21h
-
         mov ah,4ch
         int 21h
 CODE    ENDS
