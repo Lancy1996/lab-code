@@ -4,7 +4,7 @@ STACK   SEGMENT     USE16
         db  200 dup(0)
 STACK   ENDS
 DATA    SEGMENT     USE16
-inf     db 0,0,'0','x',?,?,'0ah','0dh',$
+inf     db 0,0,'0','x',?,?,'0ah','0dh','$'
 num     db 0
 DATA    ENDS
 CODE    SEGMENT     USE16
@@ -41,6 +41,7 @@ start:
         ja  output1
         add ah,30h
         mov inf+5,ah
+        jmp output2
 output1:;因字符9的ASCII码和字符A的ASCII码差7，此处加37H以变为十六进制
         add ah,37h
         mov inf+5,ah
