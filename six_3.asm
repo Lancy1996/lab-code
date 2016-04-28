@@ -4,7 +4,7 @@ STACK   SEGMENT     USE16
         db  200 dup(0)
 STACK   ENDS
 DATA    SEGMENT     USE16
-inf     db 0,'x',0,0,?,?,'0ah','0dh'
+inf     db 0,0,'0','x',?,?,'0ah','0dh',$
 num     db 0
 DATA    ENDS
 CODE    SEGMENT     USE16
